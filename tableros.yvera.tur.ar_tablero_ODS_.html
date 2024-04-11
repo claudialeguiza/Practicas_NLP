@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <script type="application/shiny-singletons">c43e97d24bbfe816ff586588b948aad02137388d</script>
+  <script type="application/html-dependencies">jquery[3.6.0];shiny-css[1.7.1];shiny-javascript[1.7.1];font-awesome[6.4.2];waiter[0.2.3];htmlwidgets[1.6.1];plotly-binding[4.9.4.1];bootstrap[3.4.1];AdminLTE[2.0.6];shinydashboard[0.7.2]</script>
+<script src="shared/jquery.min.js"></script>
+<link href="shared/shiny.min.css" rel="stylesheet" />
+<script src="shared/shiny.min.js"></script>
+<link href="font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+<script src="waiter-0.2.3/waiter.js"></script>
+<script src="htmlwidgets-1.6.1/htmlwidgets.js"></script>
+<script src="plotly-binding-4.9.4.1/plotly.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="shared/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<link href="shared/bootstrap/accessibility/css/bootstrap-accessibility.min.css" rel="stylesheet" />
+<script src="shared/bootstrap/js/bootstrap.min.js"></script>
+<script src="shared/bootstrap/accessibility/js/bootstrap-accessibility.min.js"></script>
+<link href="AdminLTE-2.0.6/AdminLTE.min.css" rel="stylesheet" />
+<link href="AdminLTE-2.0.6/_all-skins.min.css" rel="stylesheet" />
+<script src="AdminLTE-2.0.6/app.min.js"></script>
+<link href="shinydashboard-0.7.2/shinydashboard.css" rel="stylesheet" />
+<script src="shinydashboard-0.7.2/shinydashboard.min.js"></script>  <title>Indicadores ODS</title>
+  <style>
+      @media (min-width: 768px) {
+        .main-header > .navbar {
+          margin-left: 250px;
+        }
+        .main-header .logo {
+          width: 250px;
+        }
+      }
+    </style>
+  <style>.shinyjs-hide { display: none !important; }</style>
+  <script>Shiny.addCustomMessageHandler('shinyjs-show', function(params) { shinyjs.debugMessage('shinyjs: calling function "show" with parameters:'); shinyjs.debugMessage(params); shinyjs.show(params);});
+Shiny.addCustomMessageHandler('shinyjs-hide', function(params) { shinyjs.debugMessage('shinyjs: calling function "hide" with parameters:'); shinyjs.debugMessage(params); shinyjs.hide(params);});
+Shiny.addCustomMessageHandler('shinyjs-toggle', function(params) { shinyjs.debugMessage('shinyjs: calling function "toggle" with parameters:'); shinyjs.debugMessage(params); shinyjs.toggle(params);});
+Shiny.addCustomMessageHandler('shinyjs-enable', function(params) { shinyjs.debugMessage('shinyjs: calling function "enable" with parameters:'); shinyjs.debugMessage(params); shinyjs.enable(params);});
+Shiny.addCustomMessageHandler('shinyjs-disable', function(params) { shinyjs.debugMessage('shinyjs: calling function "disable" with parameters:'); shinyjs.debugMessage(params); shinyjs.disable(params);});
+Shiny.addCustomMessageHandler('shinyjs-toggleState', function(params) { shinyjs.debugMessage('shinyjs: calling function "toggleState" with parameters:'); shinyjs.debugMessage(params); shinyjs.toggleState(params);});
+Shiny.addCustomMessageHandler('shinyjs-addClass', function(params) { shinyjs.debugMessage('shinyjs: calling function "addClass" with parameters:'); shinyjs.debugMessage(params); shinyjs.addClass(params);});
+Shiny.addCustomMessageHandler('shinyjs-removeClass', function(params) { shinyjs.debugMessage('shinyjs: calling function "removeClass" with parameters:'); shinyjs.debugMessage(params); shinyjs.removeClass(params);});
+Shiny.addCustomMessageHandler('shinyjs-toggleClass', function(params) { shinyjs.debugMessage('shinyjs: calling function "toggleClass" with parameters:'); shinyjs.debugMessage(params); shinyjs.toggleClass(params);});
+Shiny.addCustomMessageHandler('shinyjs-html', function(params) { shinyjs.debugMessage('shinyjs: calling function "html" with parameters:'); shinyjs.debugMessage(params); shinyjs.html(params);});
+Shiny.addCustomMessageHandler('shinyjs-onevent', function(params) { shinyjs.debugMessage('shinyjs: calling function "onevent" with parameters:'); shinyjs.debugMessage(params); shinyjs.onevent(params);});
+Shiny.addCustomMessageHandler('shinyjs-alert', function(params) { shinyjs.debugMessage('shinyjs: calling function "alert" with parameters:'); shinyjs.debugMessage(params); shinyjs.alert(params);});
+Shiny.addCustomMessageHandler('shinyjs-logjs', function(params) { shinyjs.debugMessage('shinyjs: calling function "logjs" with parameters:'); shinyjs.debugMessage(params); shinyjs.logjs(params);});
+Shiny.addCustomMessageHandler('shinyjs-runjs', function(params) { shinyjs.debugMessage('shinyjs: calling function "runjs" with parameters:'); shinyjs.debugMessage(params); shinyjs.runjs(params);});
+Shiny.addCustomMessageHandler('shinyjs-reset', function(params) { shinyjs.debugMessage('shinyjs: calling function "reset" with parameters:'); shinyjs.debugMessage(params); shinyjs.reset(params);});
+Shiny.addCustomMessageHandler('shinyjs-delay', function(params) { shinyjs.debugMessage('shinyjs: calling function "delay" with parameters:'); shinyjs.debugMessage(params); shinyjs.delay(params);});
+Shiny.addCustomMessageHandler('shinyjs-click', function(params) { shinyjs.debugMessage('shinyjs: calling function "click" with parameters:'); shinyjs.debugMessage(params); shinyjs.click(params);});
+Shiny.addCustomMessageHandler('shinyjs-refresh', function(params) { shinyjs.debugMessage('shinyjs: calling function "refresh" with parameters:'); shinyjs.debugMessage(params); shinyjs.refresh(params);});</script>
+  <script src="shinyjs/shinyjs-default-funcs.js"></script>
+  <script>shinyjs.debug = false;</script>
+  <style type="text/css">/* Customize fonts */
+  label { 
+    font-family: 'Encode Sans Normal', Helvetica;
+    color : #37BBED;
+    font-weight: 400;
+  }
+
+  .form-group .shiny-input-container { 
+    font-family: 'Encode Sans Normal', Helvetica;
+    color : black;
+    font-weight: 400;
+  }
+
+
+  h1, h2 { font-weight: 400; 
+    font-family: 'Encode Sans Normal', Helvetica;
+    color: #37BBED;}
+  
+  h3 { font-weight: 400; 
+    font-family: 'Encode Sans Normal', Helvetica;
+    color: white;}
+
+  h4 { font-weight: 400; 
+    font-family: 'Encode Sans Normal', Helvetica;
+       color: black;}
+
+  li {
+    color: white;
+}
+
+.nav-tabs {
+  background: white;
+   font-family: 'Encode Sans Normal', Helvetica;
+}
+
+.nav-tabs-custom .nav-tabs li.active:hover a, .nav-tabs-custom .nav-tabs li.active a{
+  background-color: white;
+  border-top-color: #C2C2C2;
+}
+
+.nav-tabs-custom .nav-tabs li.active {
+  border-top-color: white;
+}
+
+/* Value boxes  */
+.small-box.bg-olive {
+  height: 350px;
+  font-family: 'Encode Sans Normal', Helvetica;
+}
+
+.small-box.bg-light-blue {
+  height: 350px;
+  font-family: 'Encode Sans Normal', Helvetica;
+}
+
+.small-box.bg-red {
+  height: 240px !important;
+  background-color: #00c0ef !important;
+  font-family: 'Encode Sans Normal', Helvetica;
+}
+.small-box.bg-aqua {
+  height: 110px;
+ background-color: #00c0ef !important;
+  font-family: 'Encode Sans Normal', Helvetica;
+}
+/* logo */
+.skin-blue .main-header .logo {
+  background-color: #37BBED;
+}
+
+/* logo when hovered */
+.skin-blue .main-header .logo:hover {
+  background-color: #37BBED;
+  font-family: 'Encode Sans Normal', Helvetica;
+}
+
+/* navbar (rest of the header) */
+.skin-blue .main-header .navbar {
+  background-color: #37BBED;
+  font-family: 'Encode Sans Normal', Helvetica;
+}        
+
+/* main sidebar */
+.skin-blue .main-sidebar {
+  background-color: #C2C2C2;
+  font-family: 'Encode Sans Normal', Helvetica;
+}
+
+/* active selected tab in the sidebarmenu */
+.skin-blue .main-sidebar .sidebar .sidebar-menu .active a{
+  background-color: #b8b8b8;
+  font-family: 'Encode Sans Normal', Helvetica;
+}
+
+/* other links in the sidebarmenu */
+.skin-blue .main-sidebar .sidebar .sidebar-menu a{
+  background-color: #C2C2C2;
+  color: #000000;
+  font-family: 'Encode Sans Normal', Helvetica;
+}
+
+/* other links in the sidebarmenu when hovered */
+ .skin-blue .main-sidebar .sidebar .sidebar-menu a:hover{
+   background-color: white;
+   font-family: 'Encode Sans Normal', Helvetica;
+ }
+ 
+/* toggle button when hovered  */                    
+ .skin-blue .main-header .navbar .sidebar-toggle:hover{
+   background-color: #37BBED;
+   font-family: 'Encode Sans Normal', Helvetica;
+ }
+ 
+ /*boxes*/
+ .skin-blue .box-header {
+    font-family: 'Encode Sans Normal', Helvetica;
+}
+
+.box.box-solid.box-primary>.box-header {
+  background:#37BBED
+                    }
+.footer {
+  font-family: 'Encode Sans Normal', Helvetica;
+  font-size: 1.5rem;
+  font-style: italic;
+  color: white;
+  background-color: #37BBED;
+  height: auto;
+  padding: 20px;
+}
+
+#footer-text {
+  color: white;
+  font-style: normal;
+}
+
+.fa-github {
+  color: white;
+}
+
+.fa-robot {
+  color: white;
+}
+
+.col-md-1 {
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+
+.row {
+  margin-right: 0;
+  margin-left: 0;
+} 
+
+.col-sm-12{
+  padding: 0;
+}</style>
+<script src="__assets__/sockjs-0.3.4.min.js"></script>
+<script src="__assets__/shiny-server-client.min.js"></script>
+<script>preShinyInit({reconnect:true,disableProtocols:[]});</script>
+<link rel="stylesheet" type="text/css" href="__assets__/shiny-server.css"/>
+
+</head>
+<body>
+  <body class="skin-blue" style="min-height: 611px;">
+    <div class="wrapper">
+      <header class="main-header">
+        <span class="logo">Indicadores ODS</span>
+        <nav class="navbar navbar-static-top" role="navigation">
+          <span style="display:none;">
+            <i class="fas fa-bars" role="presentation" aria-label="bars icon"></i>
+          </span>
+          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+          </a>
+          <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                <a href="https://www.yvera.tur.ar/sinta/" style="padding-top:10px; padding-bottom:10px;">
+                  <img src="https://tableros.yvera.tur.ar/recursos/logo_sinta.png" height="30px"/>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <aside id="sidebarCollapsed" class="main-sidebar" data-collapsed="false">
+        <section id="sidebarItemExpanded" class="sidebar">
+          <ul class="sidebar-menu">
+            <li>
+              <a href="#shiny-tab-summary" data-toggle="tab" data-value="summary">
+                <span>Resumen</span>
+              </a>
+            </li>
+            <li>
+              <a href="#shiny-tab-series" data-toggle="tab" data-value="series">
+                <span>Series</span>
+              </a>
+            </li>
+            <li>
+              <a href="#shiny-tab-metodologia" data-toggle="tab" data-value="metodologia">
+                <span>Metodología</span>
+              </a>
+            </li>
+          </ul>
+        </section>
+      </aside>
+      <div class="content-wrapper">
+        <section class="content">
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane" id="shiny-tab-summary">
+              <div class="row">
+                <h4>
+                  <b>Indicadores para el seguimiento de la actividad turística en el marco de los Objetivos de Desarrollo Sostenible (ODS) </b>
+                </h4>
+              </div>
+              <div class="row">
+                <h4>
+                  <b>Impacto económico y empleo</b>
+                </h4>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="small-box bg-navy">
+                    <div class="inner">
+                      <h3>
+                        <p style="font-size: 160%;">1,2 M</p>
+                      </h3>
+                      <p>
+                        <p style="font-size: 140%;">Puestos de trabajo en industrias turísticas (2022)</p>
+                      </p>
+                    </div>
+                    <div class="icon-large">
+                      <i class="far fa-" role="presentation" aria-label=" icon" verify_fa="FALSE"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="small-box bg-navy">
+                    <div class="inner">
+                      <h3>
+                        <p style="font-size: 160%;">44,43%</p>
+                      </h3>
+                      <p>
+                        <p style="font-size: 140%;">Tasa de informalidad del empleo asalariado turístico (2022)</p>
+                      </p>
+                    </div>
+                    <div class="icon-large">
+                      <i class="far fa-" role="presentation" aria-label=" icon" verify_fa="FALSE"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="small-box bg-navy">
+                    <div class="inner">
+                      <h3>
+                        <p style="font-size: 160%;">1,68%</p>
+                      </h3>
+                      <p>
+                        <p style="font-size: 140%;">PIB turístico respecto del PIB total (2022)</p>
+                      </p>
+                    </div>
+                    <div class="icon-large">
+                      <i class="far fa-" role="presentation" aria-label=" icon" verify_fa="FALSE"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <h4>
+                  <b>Acceso al turismo y desigualdad</b>
+                </h4>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="small-box bg-red">
+                    <div class="inner">
+                      <h3>
+                        <p style="font-size: 240%;">33,2%</p>
+                      </h3>
+                      <p>
+                        <p style="font-size: 110%;">Propensión a viajar (2022)</p>
+                      </p>
+                    </div>
+                    <div class="icon-large">
+                      <i class="far fa-" role="presentation" aria-label=" icon" verify_fa="FALSE"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="col-sm-12">
+                    <div>
+                      <div class="small-box bg-aqua">
+                        <div class="inner">
+                          <h3>
+                            <p style="font-size: 90%;">34,1</p>
+                          </h3>
+                          <p>
+                            <p style="font-size: 120%;">Índice de Gini de viajes turísticos (2022)</p>
+                          </p>
+                        </div>
+                        <div class="icon-large">
+                          <i class="far fa-" role="presentation" aria-label=" icon" verify_fa="FALSE"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="small-box bg-aqua">
+                        <div class="inner">
+                          <h3>
+                            <p style="font-size: 90%;">36,4</p>
+                          </h3>
+                          <p>
+                            <p style="font-size: 120%;">Índice de Gini de viajes turísticos de ocio (2022)</p>
+                          </p>
+                        </div>
+                        <div class="icon-large">
+                          <i class="far fa-" role="presentation" aria-label=" icon" verify_fa="FALSE"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="small-box bg-aqua">
+                    <div class="inner">
+                      <h3>
+                        <p style="font-size: 90%;">44,1</p>
+                      </h3>
+                      <p>
+                        <p style="font-size: 120%;">Índice de Gini del gasto turístico (2022)</p>
+                      </p>
+                    </div>
+                    <div class="icon-large">
+                      <i class="far fa-" role="presentation" aria-label=" icon" verify_fa="FALSE"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="shiny-tab-series">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="box">
+                    <div class="box-body">
+                      <p style="text-align: center; font-size: 20px;">Series de tiempo de los indicadores ODS</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="box box-solid box-primary">
+                    <div class="box-header">
+                      <h3 class="box-title">Puestos de trabajo en industrias turísticas (millones)</h3>
+                    </div>
+                    <div class="box-body">
+                      <div class="plotly html-widget html-widget-output shiny-report-size shiny-report-theme html-fill-item-overflow-hidden html-fill-item" id="graph_cst_empleo" style="width:100%;height:200px;"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="box box-solid box-primary">
+                    <div class="box-header">
+                      <h3 class="box-title">Tasa de informalidad del empleo asalariado turístico (%)</h3>
+                    </div>
+                    <div class="box-body">
+                      <div class="plotly html-widget html-widget-output shiny-report-size shiny-report-theme html-fill-item-overflow-hidden html-fill-item" id="informalidad_empleo" style="width:100%;height:200px;"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="box box-solid box-primary">
+                    <div class="box-header">
+                      <h3 class="box-title">PIB directo turístico respecto del PIB total (%)</h3>
+                    </div>
+                    <div class="box-body">
+                      <div class="plotly html-widget html-widget-output shiny-report-size shiny-report-theme html-fill-item-overflow-hidden html-fill-item" id="graph_pibdt" style="width:100%;height:200px;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="box box-solid box-primary">
+                    <div class="box-header">
+                      <h3 class="box-title">Propensión a viajar (%)</h3>
+                    </div>
+                    <div class="box-body">
+                      <div class="plotly html-widget html-widget-output shiny-report-size shiny-report-theme html-fill-item-overflow-hidden html-fill-item" id="graph_propension" style="width:100%;height:200px;"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-8">
+                  <div class="box box-solid box-primary">
+                    <div class="box-header">
+                      <h3 class="box-title">Índices de Gini</h3>
+                    </div>
+                    <div class="box-body">
+                      <div class="plotly html-widget html-widget-output shiny-report-size shiny-report-theme html-fill-item-overflow-hidden html-fill-item" id="graph_gini_todos" style="width:100%;height:200px;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="shiny-tab-metodologia">
+              <div class="row" width="12">
+                <div class="tab-pane" title="Metodología" data-value="Metodología">
+                  <div>
+                    <div class="box box-solid box-primary">
+                      <div class="box-body">
+                        <br/>
+                        <b style="text-align: center; font-size: 20px;color:#37BBED;">Definiciones y conceptos</b>
+                        <br/>
+                        <p style="font-size=14px">El tablero presenta un conjunto de indicadores que buscan reflejar el aporte del 
+                                turismo a los Objetivos de Desarrollo Sostenible (ODS) para nuestro país. El Documento de Trabajo 
+                                N°12: El turismo en los Objetivos de Desarrollo Sostenible aborda esta propuesta y describe en detalle las fuentas utilizadas y los indicadores elaborados</p>
+                        <b style="font-size=14px text-align: center; font-size: 20px;color:#37BBED;">Fuentes de información</b>
+                        <br/>
+                        <p style="font-size=14px">
+                          Los indicadores que reflejan el aporte del turismo a la economía en su conjunto en términos de actividad 
+                                económica y empleo, y la tasa de informalidad de éste, provienen de la 
+                          <a href="https://www.yvera.tur.ar/sinta/informe/info/cuenta-satelite-de-turismo" target="_blank">Cuenta Satélite de Turismo de Argentina (CST-A)</a>
+                          . El resto de los indicadores, que buscan medir el acceso al turismo y su nivel de desigualdad,
+                                toman como fuente de los datos a la 
+                          <a href="https://www.yvera.tur.ar/sinta/informe/info/encuesta-de-viajes-y-turismo-de-los-hogares-evyth" target="_blank">Encuesta de Viajes y Turismo de los Hogares (EVyTH)</a>
+                          , representativa de los grandes aglomerados del país.
+                        </p>
+                        <b style="text-align: center; font-size: 20px;color:#37BBED;">Indicadores</b>
+                        <br/>
+                        <p style="font-size=14px">
+                          <ul>
+                            <p style="font-size=14px">
+                              <b> • Puestos de trabajo en industrias turísticas</b>
+                              : Surge de la suma de los puestos de trabajo existentes en
+                                               los establecimientos pertenecientes a las ramas de actividad clasificadas como características del turismo. 
+                                               Incluye puestos de trabajo asalariados (registrados y no registrados) y no asalariados.
+                            </p>
+                            <p style="font-size=14px">
+                              <b style="font-size=14px"> • Tasa de informalidad en el empleo asalariado turístico</b>
+                              : Proporción de puestos de trabajo asalariados no registrados
+                                               con respecto al total de puestos de trabajo asalariados, en porcentaje, para ramas características del turismo.
+                            </p>
+                            <p style="font-size=14px">
+                              <b style="font-size=14px"> • PIB turístico respecto del PIB total</b>
+                              : la parte del PIB de la economía total atribuible directamente
+                                        al consumo turístico realizado dentro de la Argentina, ya sea por visitantes residentes o no residentes, como porcentaje del PIB total.
+                            </p>
+                            <p style="font-size=14px">
+                              <b style="font-size=14px"> • Propensión a viajar </b>
+                              : Proporción de la población que realizó al menos un viaje con pernocte durante el año de referencia.
+                            </p>
+                            <p style="font-size=14px">
+                              <b style="font-size=14px"> • Índice de Gini de viajes turísticos </b>
+                              : Medida de desigualdad habitual, aplicada a la cantidad total de viajes turísticos 
+                                               realizados según quintil de ingresos de los hogares. Valores más cercanos a 0 implican mayor igualdad, mientras que valores más próximos a 100 reflejan una mayor desigualdad en la distribución de los viajes turísticos según ingresos de la población.
+                            </p>
+                            <p style="font-size=14px">
+                              <b> • Índice de Gini de viajes turísticos de ocio </b>
+                              : El indicador, en este caso, tiene en cuenta únicamente los viajes con motivo de 'esparcimiento, ocio y recreación',
+                                               excluyéndose aquellos relacionados con la visita a familiares y amigos; trabajo, negocios, motivos profesionales; y otros.
+                            </p>
+                            <p style="font-size=14px">
+                              <b style="font-size=14px"> • Índice de Gini del gasto turístico </b>
+                              : Medida de desigualdad aplicada al gasto que los hogares tuvieron en el viaje, según quintil 
+                                               de ingresos de los hogares.
+                            </p>
+                          </ul>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>
+  <footer><footer class="footer">
+					<div class="row">
+						<div class="col-md-2 col-sm-4">
+									Dirección Nacional de Mercados y Estadística
+							</div>
+						<div class="col-md-2 col-sm-4">
+							<ul>
+								<li><a id ="footer-text" href="https://biblioteca.yvera.tur.ar/" title="Ir al sitio Biblioteca" target="_blank">Biblioteca</a></li>
+								<li><a id ="footer-text" href="https://bitacora.yvera.tur.ar/" title="Ir al sitio Bitácora" target="_blank">Bitácora</a></li>
+								</ul>
+								</div>
+						<div class="col-md-2 col-sm-4">
+							  	<ul>
+								<li><a id ="footer-text" href="https://calendario.yvera.tur.ar/" title="Ir al sitio Calendario" target="_blank">Calendario</a></li>
+								<li><a id ="footer-text" href="https://www.yvera.tur.ar/sinta/informe/info/cuenta-satelite-de-turismo" title="Ir al sitio Cuenta Satélite" target="_blank">Cuenta Satélite</a></li>
+							</ul>
+						</div>
+		<div class="col-md-2 col-sm-4">
+							<ul>
+								<li><a id ="footer-text" href="https://datos.yvera.gob.ar/" title="Ir al sitio Datos Abiertos" target="_blank">Datos Abiertos</a></li>
+								<li><a id ="footer-text" href="https://www.yvera.tur.ar/sinta/informe" title="Ir al sitio Informes" target="_blank">Informes</a></li>
+								</ul>
+								</div>
+								<div class="col-md-2 col-sm-4">
+								  <ul>
+								<li><a id ="footer-text" href="https://datatur.yvera.tur.ar/" title="Ir al sitio Provincias" target="_blank">Provincias</a></li>
+								<li><a id ="footer-text" href="https://tableros.yvera.tur.ar/" title="Ir al sitio Tableros y Reportes" target="_blank">Tableros y Reportes</a></li>
+							</ul>
+						</div>
+				<div class="col-md-1 col-sm-2">
+				   <a id ="footer-text" href="https://github.com/dnme-minturdep/">
+							<i class="fa-brands fa-github fa-2x"></i>
+							<br>Github
+							</a>
+				</div>
+				<div class="col-md-1 col-sm-2">
+						<a id ="footer-text" href="https://t.me/RDatinaBot">
+						 <i class="fa-solid fa-robot fa-2x"></i>
+						 <br>SintIA
+						</a>
+				</div>
+			</div>
+</footer></footer>
+</body>
+</html>
